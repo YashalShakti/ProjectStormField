@@ -1,6 +1,6 @@
 -- App hotspot details
-app_SSID = "Photon"
-app_pwd = ""
+app_SSID = "ScreamingSilence"
+app_pwd = "Knowledge_Is_P0w3r"
 wifi.setmode(wifi.STATION)
 wifi.sta.config(app_SSID, app_pwd)
 wifi.sta.connect()
@@ -43,7 +43,23 @@ print("server created")
 srv:listen(80, function(conn)
     conn:on("receive", function(client, request)
 
-        client:send("lol");
+        print(request)
+
+        buff = ""
+        buff = buff.."HTTP/1.1 200 OK\r\nContent-Type: text/html; charset-UTF-8\r\n"
+        buff = buff.."Content-Length: "
+        buff = buff..10
+        buff = buff.."\r\n"
+        buff = buff.."Connection : close\r\n\r\n"
+        buff = buff.."abcdefghij"
+        
+
+
+
+
+
+
+        client:send(buff);
         client:close();
         collectgarbage();
     end)
